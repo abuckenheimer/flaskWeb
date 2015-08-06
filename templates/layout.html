@@ -16,6 +16,7 @@
   <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -26,78 +27,57 @@
   <!-- Scripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
   <script src="static/js/site.js"></script>
+
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="static/images/favicon.png">
+  <link rel="icon" type="image/ico" href="static/images/favicon-flask.ico">
 
 </head>
-<body>
+<body class="has-docked-nav">
+    <div class="navbar-spacer"></div>
     <nav class="navbar">
       <div class="container">
         <ul class="navbar-list">
-          <li class="navbar-item"><a class="navbar-link" href="#intro">Intro</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="/">Intro</a></li>
           <li class="navbar-item">
-            <a class="navbar-link" href="#" data-popover="#codeNavPopover">Code</a>
+            <a class="navbar-link" href="#" data-popover="#moreNavPopover"><i class="fa fa-indent fa-fw"></i>Blog</a>
+            <div id="moreNavPopover" class="popover">
+              <ul class="popover-list">
+                {% for post in posts[:8] %}
+                <li class="popover-item">
+                  <a class="popover-link" href="/blog/{{ post }}">{{ post }}</a>
+                </li>
+                {% endfor %}
+                <li class="popover-item">
+                  <a class="popover-link" href="/blog/all">All Posts..</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="navbar-item">
+            <a class="navbar-link" href="/code" data-popover="#codeNavPopover"><i class="fa fa-code-fork fa-fw"></i>Code</a>
             <div id="codeNavPopover" class="popover">
               <ul class="popover-list">
                 <li class="popover-item">
-                  <a class="popover-link" href="#grid">Grid</a>
+                  <a class="popover-link" href="/code">This Site</a>
                 </li>
                 <li class="popover-item">
-                  <a class="popover-link" href="#typography">Typography</a>
+                  <a class="popover-link" href="/code#mp3helper">mp3Helper</a>
                 </li>
                 <li class="popover-item">
-                  <a class="popover-link" href="#buttons">Buttons</a>
+                  <a class="popover-link" href="/code#chrome">Chrome Hotkeys</a>
                 </li>
                 <li class="popover-item">
-                  <a class="popover-link" href="#forms">Forms</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="#lists">Lists</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="#code">Code</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="#tables">Tables</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="#queries">Queries</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="#utilities">Utilities</a>
+                  <a class="popover-link" href="https://github.com/abuckenheimer">Github</a>
                 </li>
               </ul>
             </div>
           </li>
-          <li class="navbar-item"><a class="navbar-link" href="#examples">Examples</a></li>
-          <li class="navbar-item">
-            <a class="navbar-link" href="#" data-popover="#moreNavPopover">More</a>
-            <div id="moreNavPopover" class="popover">
-              <ul class="popover-list">
-                <li class="popover-item">
-                  <a class="popover-link" href="https://github.com/dhg/Skeleton">On Github</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="https://github.com/dhg/Skeleton#browser-support">Browsers</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="https://github.com/dhg/Skeleton#license">License</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="https://github.com/dhg/Skeleton#extensions">Extensions</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="https://github.com/dhg/Skeleton/releases">Versions</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="https://github.com/dhg/Skeleton#colophon">Colophon</a>
-                </li>
-              </ul>
-            </div>
-          </li>
+          <li class="navbar-item"><a class="navbar-link" href="/contact"><i class="fa fa-phone fa-fw"></i>Contact</a></li>
         </ul>
       </div>
     </nav>

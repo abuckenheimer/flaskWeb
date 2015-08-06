@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="container">
+<div class="docs-section" id="post">
+<h3> Feel free to leave your info and I'll be sure to get back to you </h3>
+<form>
+    <div class="row">
+      <div class="six columns">
+        <label for="exampleEmailInput">Your email</label>
+        <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
+      </div>
+      <div class="six columns">
+        <label for="exampleRecipientInput">Reason for contacting</label>
+        <select class="u-full-width" id="exampleRecipientInput">
+          <option value="Option 1">Questions</option>
+          <option value="Option 2">Admiration</option>
+          <option value="Option 3">Can I get your number?</option>
+        </select>
+      </div>
+    </div>
+    <label for="exampleMessage">Message</label>
+    <textarea class="u-full-width" placeholder="Hello …" id="exampleMessage"></textarea>
+    <input class="button-primary" type="submit" value="Submit">
+</form>
+</div>
+<div class="docs-section" id="hack-chat">
+  <h3>Hack Chat server coming soon</h3>
+</div>
+<div class="docs-section" id="phone">
+  <h4> Phone: 1.11001011.1111001100.1011011101111</h4>
+</div>
+</div>
+{% endblock %}
